@@ -13,6 +13,7 @@ async function consultarAPI(ciudad) {
 }
 
 document.addEventListener("DOMContentLoaded", async function () {
+    const weatherSection = document.querySelector('.weather');
     const searchInput = document.querySelector('.search input');
     const searchButton = document.querySelector('.search button');
     const weatherIcon = document.querySelector('.weather-icon');
@@ -28,6 +29,9 @@ document.addEventListener("DOMContentLoaded", async function () {
         const data = await consultarAPI(inputValue);
         
         if (data) {
+            // Mostrar la sección de weather
+            weatherSection.style.display = 'block';
+            
             const roundedTemp = Math.round(data.main.temp);
             temp.textContent = `${roundedTemp} °C`;
             city.textContent = data.name;
